@@ -14,10 +14,10 @@ for ($i = 0; $i < count($arrA); $i++) {
 #2 Разработайте скрипт для запуска из командной строки, генерирующий персонализированные поздравления с днём рождения. Подготовьте два массива: в первом храните пожелания (счастья, здоровья и т.д.), во втором эпитеты (бесконечного, крепкого и т.д.). При запуске запросите имя именинника и после ввода сгенерируйте текст поздравления, включающий три пожелания. Комбинации эпитетов и пожеланий должны быть случайными. В результате необходимо получить строку, по следующему примеру: «Дорогой Илон Маск, от всего сердца поздравляю тебя с днем рождения, желаю космического терпения, бесконечного здоровья и безудержного воображения!». Для реализации используйте функции array_rand и implode;
 */
 //Вариант #А:
-function implodeArrs($arr1, $arr2) {
+function implodeArrs($arr1, $arr2): string {
     return $arr1 . " " . $arr2;
 }
-function birthday() {
+function birthday(): void {
     $wishes = [
         'счастья', 'здоровья', 'успеха', 'энтузиазма', 'веселья', 'позитива', 'терпения', 'воображения'
     ];
@@ -34,7 +34,7 @@ function birthday() {
 birthday();
 echo PHP_EOL;
 //ВАРИАНТ #Б
-function birthdayA() {
+function birthdayA(): void {
     $birthCount = 3;
     $wishes = [
         'счастья', 'здоровья', 'успеха', 'энтузиазма', 'веселья', 'позитива', 'терпения', 'воображения'
@@ -84,31 +84,28 @@ $students = [
         'Отчисляем Отчислен5' => 2
         ]
     ];
-function toString($arr) {
+function toString(array $arr): string {
     $str = '';
     foreach ($arr as $key => $val) {
         $str .= $key . ": " . $val . "\r\n";
     }
     return $str;
 }
-function averadeGroup($arr) {
+function averadeGroup(array $arr): ?float {
     return array_sum($arr) / count($arr);
 }
-function maxGroup($arr) {
+function maxGroup(array $arr): ?int {
     return array_search(max($arr), $arr);
 }
-function expulsion($arr) {
+function expulsion(array $arr): array {
     foreach ($arr as $key => $val) {
         $i = 0;
-        $str1 = "";
         foreach ($val as $name => $mark) {
-            ($i > 0) ? $name = ", " . $name : true;
             if ($mark < 3) {
-                $str1 .= $name;
-                $i++;
+                $str1[] = $name;
             }
         }
-        $str[$key] = $str1;
+        $str[$key] = implode(", ", $str1);
     }
     return $str;
 }
