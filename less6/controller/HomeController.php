@@ -3,11 +3,10 @@
 $user = null;
 
 if (isset($_SESSION['user'])) {
-    /** @var User $user */
     $user = $_SESSION['user'];
 }
 
-$username = $user ? $user->getUsername() : null;
+$username = $user ? $user : null;
 
 $pageName = 'Главная страница';
 

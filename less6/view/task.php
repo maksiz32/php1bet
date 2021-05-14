@@ -31,7 +31,7 @@
             <ul>
                 <?php foreach($tasks as $task) :?>
                     <li>
-                        <?=$task?> <a class="btn" href="/?controller=task&action=taskdone&task=<?=$task?>">Выполнено</a>
+                        <?=$task['description']?> <a class="btn" href="/?controller=task&action=taskdone&task=<?=$task['id']?>">Выполнено</a>
                     </li>
                 <?php endforeach ?>
             </ul>

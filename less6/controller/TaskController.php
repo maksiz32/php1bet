@@ -1,24 +1,23 @@
 <?php
 
 require_once 'model/TaskProvider.php';
-    // var_dump($_SESSION);
-    // die;
+
+$pdo = require 'dbconnect.php';
 
 if (isset($_GET['action']) && $_GET['action'] === 'taskdone') {
-    $task = $_GET['task'];
-    (new TaskProvider)->setTaskDone();
+    (new TaskProvider($pdo))->setTaskDone();
     header('Location: /?controller=task');
 }
 
 if (isset($_GET['action']) && $_GET['action'] === 'newtask') {
-    (new TaskProvider)->addTask();
+    (new TaskProvider($pdo))->addTask();
     header('Location: /?controller=task');
 }
 
 if (isset($_SESSION['user'])) {
     $pageName = 'TODO-список';
 
-    $tasks = (new TaskProvider)->getUndoneList();
+    $tasks = (new TaskProvider($pdo))->getUndoneList();
 
     require_once 'view/task.php';
 }  else {

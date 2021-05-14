@@ -4,13 +4,13 @@ require_once 'model/User.php';
 
 class Task {
     private string $description;
-    private bool $isDone;
-    private User $user;
+    private int $isDone;
+    private string $user;
 
     public function __construct(string $description)
     {
         $this->description = $description;
-        $this->isDone = false;
+        $this->isDone = 0;
         $this->user = $_SESSION['user'];
     }
 
@@ -26,14 +26,22 @@ class Task {
         return $this;
     }
 
-    public function getIsDone(): bool
+    public function getIsDone(): int
     {
         return $this->isDone;
     }
 
     public function setIsDone(): self
     {
-        $this->isDone = true;
+        $this->isDone = 1;
         return $this;
+    }
+
+    /**
+     * Get the value of user
+     */ 
+    public function getUser()
+    {
+        return $this->user;
     }
 }
