@@ -12,6 +12,9 @@ class UserProvider {
     }
 
     public function createUser(string $name, string $username, string $password): bool {
+        if (strlen($username) > 30) {
+            throw new UsernameLenExeption('Длина поля "Имя пользователя" не должна превышать 30 символов. Попробуйте еще раз.');
+        }
         $statement = $this->pdo->prepare(
             'INSERT INTO users (name, username, password) VALUE (:name, :username, :password)'
         );

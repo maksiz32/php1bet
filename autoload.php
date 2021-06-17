@@ -5,6 +5,7 @@ spl_autoload_register(static function (string $className) {
         'model',
         'controller',
         'view',
+        'exeption',
     ];
 
     foreach ($dirs as $dir) {
