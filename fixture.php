@@ -14,7 +14,7 @@ $pdo->exec('CREATE TABLE users (
 )');
 
 $user = new User('TestUser');
-$user->setUsername('GeekBrains');
+$user->setUsername('Maksim');
 $password = password_hash('password123', PASSWORD_DEFAULT);
 
 $userProvider = new UserProvider($pdo);
